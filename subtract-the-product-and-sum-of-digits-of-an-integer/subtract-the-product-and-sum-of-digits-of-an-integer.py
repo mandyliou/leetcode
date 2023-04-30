@@ -1,10 +1,8 @@
 class Solution:
     def subtractProductAndSum(self, n: int) -> int:
-        new = []
         product = 1
         sum = 0
-        for i in str(n):
-            new.append(int(i))
+        new = [int(i) for i in str(n)]
         for j in new:
             product *= j
             sum += j
