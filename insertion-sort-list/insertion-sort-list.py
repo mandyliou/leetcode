@@ -24,8 +24,8 @@ class Solution:
                 while y.val < temp.val:
                     x = y
                     y = y.next
-                x.next = temp
-                temp.next = y
+                x.next = temp #reconnect temp to node x
+                temp.next = y #reconnect temp to next node, y
         return dummy.next
 
             
