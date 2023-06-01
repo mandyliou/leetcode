@@ -10,12 +10,5 @@ class Solution:
             return False
         if not root.left and not root.right: #if node is a leaf
             return root.val == targetSum
-        if root.left:
-            if self.hasPathSum(root.left, targetSum - root.val):
-                return True
-        if root.right:
-            if self.hasPathSum(root.right, targetSum - root.val):
-                return True
-        
-        return False
-        
+        return self.hasPathSum(root.left, targetSum - root.val) or self.hasPathSum(root.right, targetSum - root.val)
+ 
