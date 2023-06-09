@@ -1,4 +1,10 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        return len(nums) > len(set(nums)) #if set list is shorter, there's dupes
-        
+        #hashmap
+        new = {}
+        for i in nums:
+            if i not in new:
+                new[i] = 1
+            else:
+                new[i] += 1
+                return True        
