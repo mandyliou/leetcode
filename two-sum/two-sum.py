@@ -1,17 +1,13 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        new = {}
-        #returns index and the value
-        for i, n in enumerate(nums):
-            #check if the n(number) is in dict already
-            if n in new:
-                #if it is, the 2 num that sum up to the target has been found; return the indices
-                return [new[n], i]
-            else: # add complement of current element to target to new as i as the key 
-                new[target-n] = i
-        return []
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        d = {} #create dict to store num and indices
+        for i, n in enumerate(nums): #i = index, n = num
+            diff = target - n #difference between target and curr num 
+            if diff in d: #if diff exists in dict
+                return [d[diff], i] #diff is found, return the indices of the 2 num
+            d[n] = i #if diff does NOT exist, add curr num as key and index as value to dict
+
+#time complexity: O(n) 
+#n is length of nums List; iterates over list 1x
+#space complexity: O(n)
+#worst case all nums in list might need to be stored in dict
