@@ -4,24 +4,19 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
-        dummy = ListNode()
-        tail = dummy
-        #iterate thru linked list, compare values, and update pointers
+    def mergeTwoLists(self, list1, list2) -> Optional[ListNode]:
+        curr = ListNode(0) #will traverse
+        dummy = curr #start of linkedlist
+        
         while list1 and list2:
             if list1.val < list2.val:
-                tail.next = list1
+                curr.next = list1
                 list1 = list1.next
-            else: #list2 is less
-                tail.next = list2
-                list2 = list2.next 
-            tail = tail.next
-        
-        # If one of the lists still has nodes, add them to the merged list
-        if list1:
-            tail.next = list1
-        elif list2: #only 1 can be not null
-            tail.next = list2
-        #return head of merged list 
-        return dummy.next
 
+            else: #list1.val == list2.val or list1.val > list2.val
+                curr.next = list2
+                list2 = list2.next
+            curr = curr.next #points to most recently added node (end of merged list) 
+        curr.next = list1 or list2 #returns first truthy value it encounters
+
+        return dummy.next #returns merged sorted linkedlist, skips initial dummy node
