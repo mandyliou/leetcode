@@ -11,7 +11,7 @@ class Solution:
         curr = head
         node_sum = 0
         
-        while curr:
+        while curr: #curr is not null
             if curr.val != 0: #if current value is NOT 0, add it to sum
                 node_sum += curr.val 
                 curr = curr.next #move to next node
@@ -21,9 +21,9 @@ class Solution:
                     prev.next = new_node #link new node
                     new_node.next = curr.next #skip the 0 node and link new node to the node after the zero node
                     prev = new_node #move previous node to the new node
-                else: #if no node to merge, 
-                    prev.next = curr.next #Skip the 0 node (node_sum is 0)
+                else:  # If no nodes to merge (i.e., two consecutive zeros),
+                    prev.next = curr.next #Skip the 0 node 
                 curr = curr.next #move to next node
-                node_sum = 0 #reset node sum back to 0
+                node_sum = 0 #reset node sum back to 0 for next segment
 
         return dummy.next #return modified list, exclude dummy node
